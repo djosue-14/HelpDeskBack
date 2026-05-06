@@ -1,0 +1,7 @@
+# ===========================
+# HelpDesk.Application
+# ===========================
+
+# Generated code from tools (AutoMapper, MediatR source generators, etc.)
+*.g.cs
+*.generated.cs

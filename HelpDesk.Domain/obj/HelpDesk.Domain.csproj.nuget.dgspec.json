@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {}
+    "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {
+    "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj",
         "projectName": "HelpDesk.Domain",
-        "projectPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj",
+        "projectPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj",
         "packagesPath": "C:\\Users\\djhernandez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\obj\\",
+        "outputPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\djhernandez\\AppData\\Roaming\\NuGet\\NuGet.Config"

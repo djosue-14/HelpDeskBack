@@ -1,0 +1,7 @@
+# ===========================
+# HelpDesk.Domain
+# ===========================
+
+# Generated code from source generators
+*.g.cs
+*.generated.cs

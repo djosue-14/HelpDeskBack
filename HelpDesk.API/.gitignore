@@ -1,0 +1,17 @@
+# ===========================
+# HelpDesk.API
+# ===========================
+
+# Local development settings (may contain secrets/connection strings)
+appsettings.Development.json
+appsettings.Local.json
+
+# ASP.NET Data Protection keys
+DataProtection-Keys/
+
+# HTTPS dev certificate
+*.pfx
+
+# Logs folder generated at runtime
+Logs/
+logs/

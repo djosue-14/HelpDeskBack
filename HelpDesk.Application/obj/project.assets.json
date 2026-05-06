@@ -543,11 +543,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Application\\HelpDesk.Application.csproj",
+      "projectUniqueName": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Application\\HelpDesk.Application.csproj",
       "projectName": "HelpDesk.Application",
-      "projectPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Application\\HelpDesk.Application.csproj",
+      "projectPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Application\\HelpDesk.Application.csproj",
       "packagesPath": "C:\\Users\\djhernandez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Application\\obj\\",
+      "outputPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\djhernandez\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -562,8 +562,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {
-              "projectPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj"
+            "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {
+              "projectPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj"
             }
           }
         }

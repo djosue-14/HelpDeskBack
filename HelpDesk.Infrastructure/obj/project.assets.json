@@ -4398,11 +4398,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Infrastructure\\HelpDesk.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Infrastructure\\HelpDesk.Infrastructure.csproj",
       "projectName": "HelpDesk.Infrastructure",
-      "projectPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Infrastructure\\HelpDesk.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Infrastructure\\HelpDesk.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\djhernandez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\djhernandez\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4417,8 +4417,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {
-              "projectPath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Domain\\HelpDesk.Domain.csproj"
+            "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj": {
+              "projectPath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Domain\\HelpDesk.Domain.csproj"
             }
           }
         }

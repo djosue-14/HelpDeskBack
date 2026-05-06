@@ -29,7 +29,9 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.ResolutionCategory,
                 opt => opt.MapFrom(src => src.ResolutionCategory.HasValue ? src.ResolutionCategory.Value.ToString() : null))
             .ForMember(dest => dest.AssignedAgentUsername,
-                opt => opt.MapFrom(src => src.AssignedUserId));
+                opt => opt.MapFrom(src => src.AssignedUserId))
+            .ForMember(dest => dest.RemainingSlaPct,
+                opt => opt.MapFrom(src => ComputeRemainingSlaPct(src)));
 
         CreateMap<Ticket, TicketSummaryDto>()
             .ForMember(dest => dest.DepartmentName,

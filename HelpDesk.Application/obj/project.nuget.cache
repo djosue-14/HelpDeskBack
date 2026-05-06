@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6AMghxOiZww=",
+  "dgSpecHash": "BflD2e35kGw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\djhernandez\\Desktop\\HelpDesk\\HelpDesk.Application\\HelpDesk.Application.csproj",
+  "projectFilePath": "C:\\Users\\djhernandez\\Documents\\Git\\HelpDesk\\HelpDeskBack\\HelpDesk.Application\\HelpDesk.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\djhernandez\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\djhernandez\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",

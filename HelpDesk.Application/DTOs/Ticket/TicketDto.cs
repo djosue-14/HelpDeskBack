@@ -22,6 +22,7 @@ public class TicketDto
     public DateTime Deadline { get; set; }
     public DateTime? ClosedAt { get; set; }
     public int TotalPausedMinutes { get; set; }
+    public double RemainingSlaPct { get; set; }
     public List<TicketCommentDto> Comments { get; set; } = new();
     public List<TicketAttachmentDto> Attachments { get; set; } = new();
 }

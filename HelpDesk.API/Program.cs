@@ -130,8 +130,8 @@ if (app.Environment.IsDevelopment())
     {
         var identity = new System.Security.Claims.ClaimsIdentity(
         [
-            new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, "dev-user"),
-            new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, "Administrator")
+            new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, "rocio.zavala"),
+            new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, "Coordinator") // Fase 3: vistas coordinador/admin
         ], "DevBypass");
         ctx.User = new System.Security.Claims.ClaimsPrincipal(identity);
         await next();

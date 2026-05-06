@@ -1,0 +1,15 @@
+# ===========================
+# HelpDesk.Infrastructure
+# ===========================
+
+# Entity Framework Core migrations snapshot (optional — track if team shares migrations)
+# Migrations/
+
+# Local SQLite databases used during development
+*.db
+*.db-shm
+*.db-wal
+
+# EF Core bundle output
+efbundle
+efbundle.exe

@@ -181,7 +181,7 @@ CREATE TABLE Ticket (
     CreatedAt           DATETIME2(7)    NOT NULL    DEFAULT SYSUTCDATETIME(),
     RelatedTicketId     INT             NULL,
     IsEnabled           BIT             NOT NULL    DEFAULT 1,
-
+    CreatedBy           NVARCHAR(25)    NOT NULL,
     CONSTRAINT PK_Ticket PRIMARY KEY (TicketId),
     CONSTRAINT UQ_Ticket_TicketNumber UNIQUE (TicketNumber),
     CONSTRAINT FK_Ticket_Department_DepartmentId
