@@ -1,0 +1,15 @@
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.Application.csproj.AssemblyReference.cache
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.Application.AssemblyInfoInputs.cache
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.Application.AssemblyInfo.cs
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.Application.csproj.CoreCompileInputs.cache
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\bin\Debug\net10.0\HelpDesk.Application.deps.json
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\bin\Debug\net10.0\HelpDesk.Application.dll
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\bin\Debug\net10.0\HelpDesk.Application.pdb
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\bin\Debug\net10.0\HelpDesk.Domain.dll
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\bin\Debug\net10.0\HelpDesk.Domain.pdb
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.026280F4.Up2Date
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.Application.dll
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\refint\HelpDesk.Application.dll
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\HelpDesk.Application.pdb
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Application\obj\Debug\net10.0\ref\HelpDesk.Application.dll

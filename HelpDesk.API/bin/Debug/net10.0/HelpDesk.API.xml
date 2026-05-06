@@ -1,0 +1,385 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HelpDesk.API</name>
+    </assembly>
+    <members>
+        <member name="T:HelpDesk.API.Controllers.DashboardController">
+            <summary>
+            Métricas operativas, análisis de rendimiento y vistas personalizadas por rol de usuario.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DashboardController.Get(System.Threading.CancellationToken)">
+            <summary>Vista principal del dashboard personalizada según el rol del usuario autenticado.</summary>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Dashboard obtenido correctamente (estructura varía según el rol).</response>
+            <response code="400">Error al generar el dashboard.</response>
+            <response code="403">El rol del usuario no tiene dashboard asignado.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DashboardController.GetMetrics(System.DateTime,System.DateTime,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>KPIs operativos del sistema para un período y departamento específicos.</summary>
+            <param name="from">Fecha de inicio del período (UTC).</param>
+            <param name="to">Fecha de fin del período (UTC).</param>
+            <param name="departmentId">Filtro opcional por departamento.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Métricas operativas calculadas correctamente.</response>
+            <response code="400">Rango de fechas inválido.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DashboardController.GetAgentPerformance(System.String,System.DateTime,System.DateTime,System.Threading.CancellationToken)">
+            <summary>Indicadores de rendimiento individual de un agente en un período.</summary>
+            <param name="agentId">Identificador del agente (UserId).</param>
+            <param name="from">Fecha de inicio del período (UTC).</param>
+            <param name="to">Fecha de fin del período (UTC).</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Rendimiento del agente calculado correctamente.</response>
+            <response code="404">El agente no existe o no tiene actividad en el período.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DashboardController.GetTeamPerformance(System.Int32,System.DateTime,System.DateTime,System.Threading.CancellationToken)">
+            <summary>Tabla comparativa de rendimiento de todos los agentes de un departamento.</summary>
+            <param name="departmentId">Identificador del departamento.</param>
+            <param name="from">Fecha de inicio del período (UTC).</param>
+            <param name="to">Fecha de fin del período (UTC).</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Rendimiento del equipo calculado correctamente.</response>
+            <response code="404">El departamento no existe.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DashboardController.GetHeatMap(System.DateTime,System.DateTime,System.Collections.Generic.IEnumerable{System.Int32},System.Threading.CancellationToken)">
+            <summary>Mapa de calor de volumen de tickets por departamento y tipo de soporte.</summary>
+            <param name="from">Fecha de inicio del período (UTC).</param>
+            <param name="to">Fecha de fin del período (UTC).</param>
+            <param name="departmentIds">Filtro opcional de departamentos específicos.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Mapa de calor calculado correctamente.</response>
+            <response code="400">Rango de fechas inválido.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DashboardController.GetLeaderboard(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>Ranking mensual de reputación — top 10 agentes por puntos.</summary>
+            <param name="year">Año del ranking (ej. 2026).</param>
+            <param name="month">Mes del ranking (1–12).</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Ranking mensual calculado correctamente.</response>
+            <response code="400">Año o mes fuera de rango.</response>
+        </member>
+        <member name="T:HelpDesk.API.Controllers.DepartmentsController">
+            <summary>
+            Administración de departamentos y consulta de sus tipos de soporte asociados.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DepartmentsController.GetAll(System.Threading.CancellationToken)">
+            <summary>Obtiene todos los departamentos activos.</summary>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Lista de departamentos obtenida correctamente.</response>
+            <response code="400">Error al recuperar los departamentos.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DepartmentsController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene un departamento por su ID.</summary>
+            <param name="id">Identificador único del departamento.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Departamento encontrado.</response>
+            <response code="404">No existe ningún departamento con el ID indicado.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DepartmentsController.GetSupportTypes(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene los tipos de soporte activos de un departamento específico.</summary>
+            <param name="id">Identificador del departamento.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Lista de tipos de soporte del departamento.</response>
+            <response code="404">El departamento no existe.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DepartmentsController.Create(HelpDesk.Application.DTOs.Department.CreateDepartmentRequest,System.Threading.CancellationToken)">
+            <summary>Crea un nuevo departamento.</summary>
+            <remarks>El nombre del departamento debe ser único y no superar 100 caracteres.</remarks>
+            <param name="request">Nombre y descripción del departamento.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="201">Departamento creado correctamente.</response>
+            <response code="400">Error de validación (nombre vacío, nombre duplicado, etc.).</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.DepartmentsController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>Realiza el soft delete de un departamento.</summary>
+            <param name="id">Identificador del departamento.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="204">Departamento eliminado correctamente.</response>
+            <response code="400">No se puede eliminar el departamento (tiene tickets activos u otro conflicto).</response>
+        </member>
+        <member name="T:HelpDesk.API.Controllers.ScoreController">
+            <summary>
+            Consulta de reputación de agentes y calificación de tickets resueltos.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.ScoreController.GetUserScore(System.String,System.Threading.CancellationToken)">
+            <summary>Obtiene el perfil de reputación (score) de un usuario.</summary>
+            <param name="userId">Identificador del usuario (UserId del token).</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Perfil de reputación obtenido correctamente.</response>
+            <response code="404">No existe un perfil de reputación para el usuario indicado.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.ScoreController.RateTicket(System.Int32,HelpDesk.Application.DTOs.Score.RateTicketRequest,System.Threading.CancellationToken)">
+             <summary>Califica un ticket cerrado y aplica puntos de reputación al agente.</summary>
+             <remarks>
+             Solo el solicitante del ticket puede calificarlo y únicamente una vez.
+             El ticket debe estar en estado `Closed`.
+            
+             El `raterUserId` se extrae del token JWT.
+             </remarks>
+             <param name="ticketId">Identificador del ticket a calificar.</param>
+             <param name="request">Indica si la calificación incluye comentario escrito.</param>
+             <param name="cancellationToken">Token de cancelación.</param>
+             <response code="200">Calificación registrada y puntos aplicados correctamente.</response>
+             <response code="400">El ticket no está cerrado, ya fue calificado, o el usuario no es el solicitante.</response>
+        </member>
+        <member name="T:HelpDesk.API.Controllers.SlaConfigurationsController">
+            <summary>
+            Configuración de los tiempos límite SLA (Service Level Agreement) por prioridad de ticket.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SlaConfigurationsController.GetAll(System.Threading.CancellationToken)">
+            <summary>Obtiene la configuración SLA de todas las prioridades.</summary>
+            <remarks>
+            Devuelve las configuraciones para los 4 niveles de prioridad:
+            `Critical`, `High`, `Medium`, `Low`.
+            El `hoursLimit` indica cuántas horas tiene el agente para resolver el ticket.
+            </remarks>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Configuraciones SLA obtenidas correctamente.</response>
+            <response code="400">Error al recuperar las configuraciones.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SlaConfigurationsController.Update(System.String,HelpDesk.Application.DTOs.SlaConfiguration.UpdateSlaConfigurationRequest,System.Threading.CancellationToken)">
+             <summary>Actualiza el tiempo límite SLA para una prioridad específica.</summary>
+             <remarks>
+             El parámetro `priority` en la ruta acepta los valores: `Critical`, `High`, `Medium`, `Low`.
+            
+             Ejemplo: `PUT /api/SlaConfigurations/High` con body `{ "hoursLimit": 6 }`.
+            
+             El `hoursLimit` debe ser un entero positivo mayor que cero.
+             </remarks>
+             <param name="priority">Nivel de prioridad a actualizar (`Critical`, `High`, `Medium`, `Low`).</param>
+             <param name="request">Nuevo valor de horas límite.</param>
+             <param name="cancellationToken">Token de cancelación.</param>
+             <response code="200">Configuración SLA actualizada correctamente.</response>
+             <response code="400">Prioridad inválida o `hoursLimit` menor o igual a cero.</response>
+        </member>
+        <member name="T:HelpDesk.API.Controllers.SupportTypeAgentsController">
+            <summary>
+            Asignación y seguimiento de agentes a tipos de soporte.
+            Solo puede existir un agente activo por tipo de soporte en cualquier momento.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypeAgentsController.GetActive(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene la asignación activa de un tipo de soporte.</summary>
+            <param name="supportTypeId">Identificador del tipo de soporte.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Asignación activa encontrada.</response>
+            <response code="404">El tipo de soporte no tiene agente activo asignado.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypeAgentsController.GetHistory(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene el historial completo de asignaciones de un tipo de soporte.</summary>
+            <param name="supportTypeId">Identificador del tipo de soporte.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Historial de asignaciones obtenido correctamente.</response>
+            <response code="400">Error al recuperar el historial.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypeAgentsController.Assign(HelpDesk.Application.DTOs.SupportTypeAgent.AssignAgentRequest,System.Threading.CancellationToken)">
+             <summary>Asigna el usuario autenticado como agente activo de un tipo de soporte.</summary>
+             <remarks>
+             El `userId` del agente **siempre** se extrae del token JWT — nunca del body.
+             Si ya existe un agente activo para el tipo de soporte, se realiza su soft-delete automáticamente
+             antes de crear la nueva asignación (operación atómica en transacción).
+            
+             El body solo requiere el `supportTypeId`.
+             </remarks>
+             <param name="request">Identificador del tipo de soporte a asignar.</param>
+             <param name="cancellationToken">Token de cancelación.</param>
+             <response code="200">Agente asignado correctamente. Devuelve la nueva asignación activa.</response>
+             <response code="400">El tipo de soporte no existe o error de validación.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypeAgentsController.Unassign(System.Int32,System.Threading.CancellationToken)">
+            <summary>Desasigna el agente activo de un tipo de soporte (soft delete).</summary>
+            <param name="supportTypeId">Identificador del tipo de soporte.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="204">Agente desasignado correctamente.</response>
+            <response code="400">No hay ningún agente activo asignado a este tipo de soporte.</response>
+        </member>
+        <member name="T:HelpDesk.API.Controllers.SupportTypesController">
+            <summary>
+            Administración de tipos de soporte disponibles en el sistema.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypesController.GetAll(System.Threading.CancellationToken)">
+            <summary>Obtiene todos los tipos de soporte activos.</summary>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Lista de tipos de soporte obtenida correctamente.</response>
+            <response code="400">Error al recuperar los tipos de soporte.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypesController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene un tipo de soporte por su ID.</summary>
+            <param name="id">Identificador único del tipo de soporte.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Tipo de soporte encontrado.</response>
+            <response code="404">No existe ningún tipo de soporte con el ID indicado.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypesController.Create(HelpDesk.Application.DTOs.SupportType.CreateSupportTypeRequest,System.Threading.CancellationToken)">
+            <summary>Crea un nuevo tipo de soporte asociado a un departamento.</summary>
+            <param name="request">Nombre, descripción y departamento del tipo de soporte.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="201">Tipo de soporte creado correctamente.</response>
+            <response code="400">Error de validación (departamento no existe, nombre vacío, etc.).</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.SupportTypesController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>Realiza el soft delete de un tipo de soporte.</summary>
+            <param name="id">Identificador del tipo de soporte.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="204">Tipo de soporte eliminado correctamente.</response>
+            <response code="400">No se puede eliminar (tiene tickets activos u otro conflicto).</response>
+        </member>
+        <member name="T:HelpDesk.API.Controllers.TicketCommentsController">
+            <summary>
+            Gestión del hilo de comentarios y notas internas de un ticket.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketCommentsController.GetByTicket(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene todos los comentarios de un ticket.</summary>
+            <remarks>
+            Los comentarios de visibilidad `Internal` solo son visibles para agentes y coordinadores.
+            Los solicitantes solo ven comentarios `Public`.
+            </remarks>
+            <param name="ticketId">Identificador del ticket.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Lista de comentarios obtenida correctamente.</response>
+            <response code="404">El ticket no existe o no está accesible para el usuario.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketCommentsController.AddComment(System.Int32,HelpDesk.Application.DTOs.TicketComment.AddCommentRequest,System.Threading.CancellationToken)">
+             <summary>Agrega un nuevo comentario o nota interna a un ticket.</summary>
+             <remarks>
+             El campo `visibility` acepta: `Public` (visible para todos) o `Internal` (solo agentes/coordinadores).
+            
+             El `authorId` se extrae del token JWT; nunca se acepta en el body.
+             </remarks>
+             <param name="ticketId">Identificador del ticket al que pertenece el comentario.</param>
+             <param name="request">Contenido y visibilidad del comentario.</param>
+             <param name="cancellationToken">Token de cancelación.</param>
+             <response code="200">Comentario agregado correctamente.</response>
+             <response code="400">Error de validación (contenido vacío, visibilidad inválida, etc.).</response>
+        </member>
+        <member name="T:HelpDesk.API.Controllers.TicketsController">
+            <summary>
+            Gestión del ciclo de vida completo de los tickets de soporte.
+            </summary>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.GetAll(System.Threading.CancellationToken)">
+            <summary>Obtiene todos los tickets del sistema.</summary>
+            <remarks>Devuelve un listado resumido. Los agentes solo ven sus tickets asignados; administradores ven todos.</remarks>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Listado de tickets obtenido correctamente.</response>
+            <response code="400">Error al recuperar los tickets.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene el detalle completo de un ticket por su ID.</summary>
+            <param name="id">Identificador único del ticket.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Ticket encontrado con todos sus detalles, comentarios y adjuntos.</response>
+            <response code="404">No existe ningún ticket con el ID indicado.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.Create(HelpDesk.Application.DTOs.Ticket.CreateTicketRequest,System.Threading.CancellationToken)">
+             <summary>Crea un nuevo ticket de soporte.</summary>
+             <remarks>
+             El sistema asigna automáticamente:
+             - **TicketNumber** secuencial
+             - **Deadline** según la configuración SLA de la prioridad indicada
+             - **AssignedAgent** según el agente activo del tipo de soporte
+            
+             El campo `createdBy` se extrae del token JWT.
+             </remarks>
+             <param name="request">Datos del ticket a crear.</param>
+             <param name="cancellationToken">Token de cancelación.</param>
+             <response code="201">Ticket creado correctamente. Devuelve el ticket con todos sus campos calculados.</response>
+             <response code="400">Error de validación o referencia inválida (departamento/tipo de soporte no encontrado).</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.UpdateStatus(System.Int32,HelpDesk.Application.DTOs.Ticket.UpdateTicketStatusRequest,System.Threading.CancellationToken)">
+            <summary>Cambia el estado de un ticket.</summary>
+            <param name="id">Identificador del ticket.</param>
+            <param name="request">Nuevo estado a aplicar.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Estado actualizado correctamente.</response>
+            <response code="400">Transición de estado inválida o estado desconocido.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.Close(System.Int32,HelpDesk.Application.DTOs.Ticket.CloseTicketRequest,System.Threading.CancellationToken)">
+            <summary>Cierra un ticket indicando la categoría de resolución.</summary>
+            <param name="id">Identificador del ticket.</param>
+            <param name="request">Categoría de resolución y comentario de cierre.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Ticket cerrado correctamente.</response>
+            <response code="400">Error de validación o el ticket ya está cerrado.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.Reopen(System.Int32,HelpDesk.Application.DTOs.Ticket.ReopenTicketRequest,System.Threading.CancellationToken)">
+            <summary>Reabre un ticket cerrado dentro del período de gracia.</summary>
+            <param name="id">Identificador del ticket.</param>
+            <param name="request">Motivo de reapertura.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Ticket reabierto correctamente.</response>
+            <response code="400">El ticket no puede reabrirse (estado incorrecto o período de gracia expirado).</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.Redirect(System.Int32,HelpDesk.Application.DTOs.Ticket.RedirectTicketRequest,System.Threading.CancellationToken)">
+            <summary>Redirige un ticket a un tipo de soporte diferente.</summary>
+            <param name="id">Identificador del ticket.</param>
+            <param name="request">Nuevo tipo de soporte de destino.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="200">Ticket redirigido correctamente.</response>
+            <response code="400">El tipo de soporte destino no existe o es el mismo que el actual.</response>
+        </member>
+        <member name="M:HelpDesk.API.Controllers.TicketsController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>Realiza el soft delete de un ticket (deshabilita sin eliminar de la BD).</summary>
+            <param name="id">Identificador del ticket.</param>
+            <param name="cancellationToken">Token de cancelación.</param>
+            <response code="204">Ticket eliminado (deshabilitado) correctamente.</response>
+            <response code="400">No se pudo eliminar el ticket.</response>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>

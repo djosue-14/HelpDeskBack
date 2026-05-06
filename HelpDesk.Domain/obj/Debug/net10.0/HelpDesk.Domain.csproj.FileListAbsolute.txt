@@ -1,0 +1,11 @@
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\bin\Debug\net10.0\HelpDesk.Domain.deps.json
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\bin\Debug\net10.0\HelpDesk.Domain.dll
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\bin\Debug\net10.0\HelpDesk.Domain.pdb
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\HelpDesk.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\HelpDesk.Domain.AssemblyInfoInputs.cache
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\HelpDesk.Domain.AssemblyInfo.cs
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\HelpDesk.Domain.csproj.CoreCompileInputs.cache
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\HelpDesk.Domain.dll
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\refint\HelpDesk.Domain.dll
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\HelpDesk.Domain.pdb
+C:\Users\djhernandez\Desktop\HelpDesk\HelpDesk.Domain\obj\Debug\net10.0\ref\HelpDesk.Domain.dll
